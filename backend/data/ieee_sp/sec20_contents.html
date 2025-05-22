@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>IEEE Symposium on Security and Privacy 2020</title>
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- icons -->
+    <link href="images/favicon.png" rel="icon" type="image/png">
+    <link href="images/favicon.png" rel="apple-touch-icon" type="image/png">
+
+    <!-- bootstrap -->
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+    <!-- glyphs -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="css/webfonts.css" type="text/css">
+
+    <!-- custom css -->
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
+    <!-- workaround for ie 7, 8 -->
+    <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+
+	<script>
+		function updateCfPDeadline() {
+			var d = new Date(),
+		    months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+			htmlel = document.getElementById("cfpRollingDeadline")
+			if(htmlel != null) {
+				if(d.getMonth() <= 12 && d.getFullYear()==2018) {
+					htmlel.innerHTML = 'Rolling (Next deadline: January 1, 2019)';					
+				} else {
+					htmlel.innerHTML = 'Rolling (Next deadline: ' + months[(d.getMonth() + 1) % 12]+' 1, 2019)';
+				}
+			}
+		}
+	</script>
+
+
+    <!-- google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-80995671-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+	<script src="https://s3-us-west-2.amazonaws.com/ieeeshutpages/gdpr/settings.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+	<script>
+		window.addEventListener("load", function(){
+		 window.cookieconsent.initialise(json)
+		});
+	</script>
+  </head>
+  <body onLoad="updateCfPDeadline()">
+
+    <!-- https://github.com/twbs/bootstrap/issues/10601 -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="banner">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">S &amp; P</a>
+        </div>
+        <div class="collapse navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html"><i class="fa fa-home"></i> &nbsp; Home</a></li>
+
+
+            <li class="dropdown active">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Program <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="program-compact.html">Program (Compact)</a></li>
+                <li><a href="program.html">Program</a></li>
+                <li><a href="program-papers.html">Accepted Papers</a></li>
+                <li><a href="program-posters.html">Posters</a></li>
+                <li><a href="program-shorttalks.html">Short Talks</a></li>
+                <li><a href="awards.html">Awards</a></li>
+              </ul>
+            </li>
+
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Call For... &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="cfpapers.html">Papers</a></li>
+                <li><a href="cfdonors.html">Donors</a></li>
+                <li><a href="shadowpc.html">Shadow PCs</a></li>
+                <li><a href="cfposters.html">Posters</a></li>
+                <li><a href="cftalks.html">Short Talks</a></li>
+                <li><a href="cfworkshops.html">Workshops</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Attend &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+               <!-- <li><a href="venue.html">Venue Info</a></li> -->
+               <!-- <li><a href="https://na.eventscloud.com/ereg/index.php?eventid=504642&" target="_blank">Registration</a></li> -->
+               <li><a href="virtual-access.html">Access Details</a></li>
+               <li><a href="travel_grants.html">Student Registration Grants</a></li>
+               <li><a href="codeofconduct.html">Attendee Code of Conduct</a></li>
+              </ul>
+            </li>
+
+
+   		 <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Workshops &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="workshops.html">General Info</a></li>
+              </ul>
+        </li>
+
+
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+<!-- comment press page
+            <li class="hidden-sm"><a href="press.html">Press</a></li>
+end press -->
+            <li class="hidden-sm">
+              <a href="https://twitter.com/ieeessp">
+                <i class="fa fa-twitter hidden-xs"></i>
+                <span class="visible-xs">Twitter</span>
+              </a>
+            </li>
+
+            <li class="hidden-sm">
+              <a href="https://www.facebook.com/ieeessp">
+                <i class="fa fa-facebook hidden-xs"></i>
+                <span class="visible-xs">Facebook</span>
+              </a>
+            </li>
+            <li class="hidden-sm">
+              <a href="http://www.linkedin.com/groups?gid=7403306">
+                <i class="fa fa-linkedin hidden-xs"></i>
+                <span class="visible-xs">LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="contact.html">
+                <i class="fa fa-envelope hidden-xs"></i>
+                <span class="visible-xs">Contact</span>
+              </a>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                About &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+               <li><a href="past.html">Past Conferences</a></li>
+               <li><a href="organizers.html">Conference Organizers</a></li>
+               <li><a href="https://www.ieee-security.org/index.html">Technical Committee</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <p class="location">
+          
+              MAY 18-20, 2020 
+              <!-- AT THE
+              HYATT REGENCY,
+              SAN FRANCISCO, CA -->
+          
+        </p>
+
+        <p class="title">
+          
+              41st IEEE Symposium on<br>Security and Privacy
+          
+        </p>
+
+        <p class="sponsors hidden-xs">
+          Sponsored by the <a class="jumbotron_link" href="http://ieee-security.org/">IEEE Computer Society Technical
+              Committee on Security and Privacy</a> in cooperation with the <a
+              class="jumbotron_link" href="http://www.iacr.org">International Association for Cryptologic Research</a>
+        </p>
+       <!-- <p class="sponsors">
+          <a class="btn btn-default btn-lg" target="_blank" href="https://na.eventscloud.com/ereg/index.php?eventid=504642&">
+            <i class="fa fa-chevron-circle-right fa-lg"></i>&nbsp;&nbsp; Register
+          </a>
+        </p> -->
+        <p class="sponsors">
+          <a class="btn btn-default btn-lg" href="virtual-access.html">
+            <i class="fa fa-chevron-circle-right fa-lg"></i>&nbsp;&nbsp; Access details
+          </a>
+        </p>
+        
+
+      </div>
+    </div>
+    <!--
+    <div class="notice">
+        <p>  Conference Paper Abstracts due Friday November 4! </p>
+        <p class="text"><em> Only papers with an abstract submitted by the
+            deadline will be reviewed.</em></p>
+    </div>
+    -->
+    
+
+    
+
+    <div class="container">
+<h1>Accepted Papers</h1>
+
+<hr>
+
+<div class="panel-group" id="all">
+  <div class="panel panel-default">
+    <div class="panel-body" style="padding-bottom: 1ex">
+      <div class="list-group-item">
+        <b>
+          A Programming Framework for Differential Privacy with Accuracy Concentration Bounds
+        </b>
+        <br>
+        Elisabet Lobo-Vesga (Chalmers University of Technology), Alejandro Russo (Chalmers University of Technology), Marco Gaboardi (Boston University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          A Security Analysis of the Facebook Ad Library
+        </b>
+        <br>
+        Laura Edelson (New York University), Tobias Lauinger (New York University), Damon McCoy (New York University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          A Stealthier Partitioning Attack against Bitcoin Peer-to-Peer Network
+        </b>
+        <br>
+        Muoi Tran (National University of Singapore), Inho Choi (National University of Singapore), Gi Jun Moon (Korea University), Anh Vu (Japan Advanced Institute of Science and Technology), Min Suk Kang (National University of Singapore)
+      </div>
+      <div class="list-group-item">
+        <b>
+          A Tale of Sea and Sky: On the Security of Maritime VSAT Communications
+        </b>
+        <br>
+        James Pavur (Oxford University), Daniel Moser (armasuisse), Martin Strohmeier (armasuisse), Vincent Lenders (armasuisse), Ivan Martinovic (Oxford University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          AdGraph: A Graph-Based Approach to Ad and Tracker Blocking
+        </b>
+        <br>
+        Umar Iqbal (University of Iowa / Brave Software), Peter Snyder (Brave Software), Shitong Zhu (UC Riverside), Benjamin Livshits (Brave Software / Imperial College London), Zhiyun Qian (UC Riverside), Zubair Shafiq (University of Iowa)
+      </div>
+      <div class="list-group-item">
+        <b>
+          An Analysis of Pre-installed Android Software
+        </b>
+        <br>
+        Julien Gamba (IMDEA Networks Institute, Universidad Carlos III de Madrid), Mohammed Rashed (Universidad Carlos III de Madrid), Abbas Razaghpanah (Stony Brook University), Juan Tapiador (Universidad Carlos III de Madrid), Narseo Vallina-Rodriguez (IMDEA Networks Institute, ICSI)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Are Anonymity-Seekers Just Like Everybody Else?  An Analysis of Contributions to Wikipedia from Tor
+        </b>
+        <br>
+        Chau Tran (New York University), Kaylea Champion (University of Washington), Andrea Forte (Drexel University), Benjamin Mako Hill (University of Washington), Rachel Greenstadt (New York University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Are We Susceptible to Rowhammer?  An End-to-End Methodology for Cloud Providers
+        </b>
+        <br>
+        Lucian Cojocar (Microsoft Research), Jeremie Kim (ETH Zurich, CMU), Minesh Patel (ETH Zurich), Lillian Tsai (MIT), Stefan Saroiu (Microsoft Research), Alec Wolman (Microsoft Research), Onur Mutlu (ETH Zurich, CMU)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Ask the Experts: What Should Be on an IoT Privacy and Security Label?
+        </b>
+        <br>
+        Pardis Emami-Naeini (Carnegie Mellon University), Yuvraj Agarwal (Carnegie Mellon University), Lorrie Faith Cranor (Carnegie Mellon University), Hanan Hibshi (Carnegie Mellon University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Automatic Uncovering of Hidden Behaviors from Input Validation in Mobile Apps
+        </b>
+        <br>
+        Quingchuan Zhao (The Ohio State University), Chaoshun Zuo (The Ohio State University), Brendan Dolan-Gavitt (New York University), Giancarlo Pellegrino (CISPA Helmholtz Center for Information Security, Germany), Zhiqiang Lin (The Ohio State University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Automatically Detecting Bystanders in Photos to Reduce Privacy Risks
+        </b>
+        <br>
+        Rakibul Hasan (Indiana University), David Crandall (Indiana University), Mario Fritz (CISPA Helmholtz Center for Information Security, Germany), Apu Kapadia (Indiana University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          BIAS: Bluetooth Impersonation AttackS
+        </b>
+        <br>
+        Daniele Antonioli (�cole Polytechnique Fédérale de Lausanne (EPFL)), Nils Ole Tippenhauer (CISPA Helmholtz Center for Information Security, Germany), Kasper Rasmussen (University of Oxford)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Binsec/Rel: Efficient Relational Symbolic Execution for Constant-Time at Binary-Level
+        </b>
+        <br>
+        Lesly-Ann Daniel (CEA, List, Université Paris-Sacley), Sébastien Bardin (CEA, List, Université Paris-Sacley), Tamara Rezk (INRIA Sophia-Antipolis, INDES Project, France)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Breaking and (Partially) Fixing Provably Secure Onion Routing
+        </b>
+        <br>
+        Christiane Kuhn (KIT Karlsruhe), Martin Beck (TU Dresden), Thorsten Strufe (Karlsruhe Institute of Technology (KIT) and Centre of Tactile Internet (TU Dresden))
+      </div>
+      <div class="list-group-item">
+        <b>
+          Browsing Unicity: On the Limits of Anonymizing Web Tracking Data
+        </b>
+        <br>
+        Clemens Deu�er (TU Dresden), Steffen Passmann (INFOnline GMbH), Thorsten Strufe (Karlsruhe Institute of Technology (KIT) and Centre of Tactile Internet (TU Dresden))
+      </div>
+      <div class="list-group-item">
+        <b>
+          Burglars' IoT Paradise: Understanding and Mitigating Security Risks of General Messaging Protocols on IoT Clouds
+        </b>
+        <br>
+        Yan Jia (Xidian University / University of Chinese Academy of Sciences / Indana University at Bloomington), Luyi Xing (Indiana University at Bloomington), Yuhang Mao (Xidian University / University of Chinese Academy of Sciences), Dongfang Zhao (Indiana University at Bloomington), XiaoFeng Wang (Indiana University at Bloomington), Shangru Zhao (Xidian University / University of Chinese Academy of Sciences), Yuqing Zhang (Xidian University / University of Chinese Academy of Sciences)
+      </div>
+      <div class="list-group-item">
+        <b>
+          C3APSULe: Cross-FPGA Covert-Channel Attacks through Power Supply Unit Leakage
+        </b>
+        <br>
+        Ilias Giechaskiel (University of Oxford), Kasper Bonne Rasmussen (University of Oxford), Jakub Szefer (Yale University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Can Voters Detect Malicious Manipulation of Ballot Marking Devices?
+        </b>
+        <br>
+        Matthew Bernhard (University of Michigan), Allison McDonald (University of Michigan), Henry Meng (University of Michigan), Jensen Hwa (University of Michigan), Nakul Bajaj (The Harker School), Kevin Chang (University of Michigan), J. Alex Halderman (University of Michigan)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Combating Dependence Explosion in Forensic Analysis Using Alternative Tag Propagation Semantics
+        </b>
+        <br>
+        Md Nahid Hossain (Stony Brook University), Sanaz Sheikhi (Stony Brook University), R. Sekar (Stony Brook University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Cornucopia: Temporal Safety for CHERI Heaps
+        </b>
+        <br>
+        Nathaniel Wesley Filardo (University of Cambridge), Brett F. Gutstein (University of Cambridge), Jonathan Woodruff (University of Cambridge), Sam Ainsworth (University of Cambridge), Lucian Paul-Trifu (University of Cambridge), Brooks Davis (SRI International), Hongyan Xia (University of Cambridge), Edward Tomasz Napierala (University of Cambridge), Alexander Richardson (University of Cambridge), John Baldwin (Ararat River Consulting), David Chisnall (Microsoft Research / University of Cambridge), Jessica Clarke (University of Cambridge), Khilan Gudka (University of Cambridge), Alexandre Joannou (University of Cambridge), A. Theodore Markettos (University of Cambridge), Alfredo Mazzinghi (University of Cambridge), Robert Norton (University of Cambridge), Michael Roe (University of Cambridge), Peter Sewell (University of Cambridge), Stacey Son (University of Cambridge), Timothy M. Jones (University of Cambridge), Simon Moore (University of Cambridge), Peter G. Neumann (SRI International), Robert N. M. Watson (University of Cambridge)
+      </div>
+      <div class="list-group-item">
+        <b>
+          CrypTFlow : Secure TensorFlow Inference
+        </b>
+        <br>
+        Nishant Kumar (Microsoft Research, India), Mayank Rathee (Microsoft Research, India), Nishanth Chandran (Microsoft Research, India), Divya Gupta (Microsoft Research, India), Aseem Rastogi (Microsoft Research, India), Rahul Sharma (Microsoft Research, India)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Detection of Electromagnetic Interference Attacks on Sensor Systems
+        </b>
+        <br>
+        Youqian Zhang (University of Oxford), Kasper Rasmussen (University of Oxford)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Do Cookie Banners Respect My Choice?  Measuring Legal Compliance of Banners from IAB Europe's Transparancy and Consent Framework
+        </b>
+        <br>
+        Célestin Matte (Inria, France), Nataliia Bielova (Inria, France), Cristiana Santos (Inria, France)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP-pwd
+        </b>
+        <br>
+        Mathy Vanhoef (New York University Abu Dhabi), Eyal Ronen (Tel Aviv University / KU Leuven)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Efficient and Secure Multiparty Computation from Fixed-Key Block Ciphers
+        </b>
+        <br>
+        Chun Guo (Université catholique de Louvain), Jonathan Katz (University of Maryland), Xiao Wang (Northwestern University), Yu Yu (Shanghai Jiao Tong University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Enabling Rack-scale Confidential Computing using Heterogeneous Trusted Execution Environment
+        </b>
+        <br>
+        Jianping Zhu (University of Chinese Academy of Sciences), Rui Hou (University of Chinese Academy of Sciences), XiaoFeng Wang (Indiana University at Bloomington), Wenhao Wang (University of Chinese Academy of Sciences), Jianfeng Cao (University of Chinese Academy of Sciences), Boyan Zhao (University of Chinese Academy of Sciences), Zhongpu Wang (University of Chinese Academy of Sciences), Yuhui Zhang (University of Chinese Academy of Sciences), Jiameng Ying (University of Chinese Academy of Sciences), Lixin Zhang (Institute of Computing Technology, CAS), Dan Meng (University of Chinese Academy of Sciences)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Even Black Cats Cannot Stay Hidden in the Dark: Full-band De-anonymization of Bluetooth Classic Devices
+        </b>
+        <br>
+        Marco Cominelli (CNIT / University of Brescia), Francesco Gringoli (CNIT / University of Brescia), Margus Lind (Context Information Security, Scotland), Paul Patras (The University of Edinburgh), Guevara Noubir (Northeastern University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          EverCrypt:  A Fast, Verified, Cross-Platform Crytographic Provider
+        </b>
+        <br>
+        Jonathan Protzenko (Microsoft Research), Bryan Parno (Carnegie Melon University), Aymeric Fromherz (Carnegie Melon University), Chris Hawblitzel (Microsoft Research), Marina Polubelova (Inria, France), Karthikeyan Bhargavan (Inria, France), Benjamin Beurdouche (Inria, France), Joonwon Choi (MIT / Microsoft Research), Antione Delignat-Lavaud (Microsoft Research), Cédric Fournet (Microsoft Research), Natalia Kulatova (Inria, France), Tahina Ramananandro (Microsoft Research), Aseem Rastogi (Microsoft Research, India), Nikhil Swamy (Microsoft Research), Christoph Wintersteiger (Microsoft Research, UK), Santiago Zanella-Beguelin (Microsoft Research, UK)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Ex-vivo dynamic analysis framework for Android device drivers
+        </b>
+        <br>
+        Ivan Pustogarov (University of Toronto), Qian Wu (University of Toronto), David Lie (University of Toronto)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Flash Boys 2.0: Frontrunning in Decentralized Exchanges, Miner Extractable Value, and Consensus Instability
+        </b>
+        <br>
+        Philip Daian (Cornell Tech), Steven Goldfeder (Cornell Tech), Tyler Kell (Cornell Tech), Yunqi Li (UIUC), Xueyuan Zhao (Carnegie Mellon University), Iddo Bentov (Cornell Tech), Lorenz Breidenbach (ETH Zurich), Ari Juels (Cornell Tech)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Flaw Label: Exploiting IPv6 Flow Label
+        </b>
+        <br>
+        Jonathan Berger (Bar-Ilan University), Amit Klein (Bar-Ilan University), Benny Pinkas (Bar-Ilan University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          FlyClient: Super-Light Clients for Cryptocurrencies
+        </b>
+        <br>
+        Benedikt Bünz (Stanford University), Lucianna Kiffer (Northeastern University), Loi Luu (Kyber Network), Mahdi Zamani (Visa Research)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Fuzzing JavaScript Engines with Aspect-preserving Mutation
+        </b>
+        <br>
+        Soyeon Park (Georgia Institute of Technology), Wen Xu (Georgia Institute of Technology), Insu Yun (Georgia Institute of Technology), Daehee Jang (Georgia Institute of Technology), Taesoo Kim (Georgia Institute of Technology)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Gesture Authentication for Smartphones: Evaluation of Gesture Password Selection Policies
+        </b>
+        <br>
+        Eunyong Cheon (UNIST, Republic of Korea), Yonghwan Shin (UNIST, Republic of Korea), Jun Ho Huh (Samsung Research, Republic of Korea), Hyoungshick Kim (Sungkyunkwan University, Republic of Korea), Ian Oakley (UNIST, Republic of Korea)
+      </div>
+      <div class="list-group-item">
+        <b>
+          High Precision Open-World Website Fingerprinting
+        </b>
+        <br>
+        Tao Wang (Hong Kong University of Science and Technology)
+      </div>
+      <div class="list-group-item">
+        <b>
+          HopSkipJumpAttack: A Query-Efficient Decision-Based Attack
+        </b>
+        <br>
+        Jianbo Chen (University of California, Berkeley), Michael I. Jordan (University of California, Berkeley), Martin J. Wainwright (University of California, Berkeley / Voleon Group)
+      </div>
+      <div class="list-group-item">
+        <b>
+          How Not to Prove Your Election Outcome
+        </b>
+        <br>
+        Thomas Haines (Norweigian University of Science and Technology), Sarah Jamie Lewis (Open Privacy Research Society), Olivier Pereira (UCLouvian ICTEAM), Vanessa Teague (The University of Melbourne)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Humpty Dumpty: Controlling Word Meanings via Corpus Poisoning
+        </b>
+        <br>
+        Roei Schuster (Tel Aviv University), Tal Schuster (CSAIL / MIT), Yoav Meri (Cornell Tech), Vitaly Shmatikov (Cornell Tech)
+      </div>
+      <div class="list-group-item">
+        <b>
+          HydRand: Efficient Continuous Distributed Randomness
+        </b>
+        <br>
+        Philipp Schindler (SBA Research), Aljosha Judmayer (SBA Research), Nicholas Stifter (SBA Research / TU Wien), Edgar Weippl (SBA Research / TU Wien)
+      </div>
+      <div class="list-group-item">
+        <b>
+          ICAS: An Extensible Framework for Estimating the Susceptibility of IC Layouts to Additive Trojans
+        </b>
+        <br>
+        Timothy Trippel (University of Michigan), Kang Shin (University of Michigan), Kevin Bush (MIT Lincoln Laboratory), Matthew Hicks (Virginia Tech)
+      </div>
+      <div class="list-group-item">
+        <b>
+          ICLab: A Global, Longitudinal Internet Censorship Measurement Platform
+        </b>
+        <br>
+        Arian Akhavan Niaki (University of Massachusetts, Amherst), Shinyoung Cho (University of Massachusetts, Amherst / Stony Brook University), Zachary Weinberg (Carnegie Mellon University), Nguyen Phong Hoang (Stony Brook University), Abbas Razaghpanah (Stony Brook University), Nicholas Christin (Carnegie Mellon University), Phillipa Gill (Stony Brook University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          IJON: Exploring Deep State Spaces via Fuzzing
+        </b>
+        <br>
+        Cornelius Aschermann (Ruhr University Bochum), Sergej Schumilo (Ruhr University Bochum), Ali Abbasi (Ruhr University Bochum), Thorsten Holz (Ruhr University Bochum)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Influencing Photo Sharing Decisions on Social Media:  A Case of Paradoxical Findings
+        </b>
+        <br>
+        Mary Jean Amon (University of Colorado Boulder), Rakibul Hasan (Indiana University), Kurt Hugenberg (Indiana University), Bennett Bertenthal (Indiana University), Apu Kapadia (Indiana University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Intriguing Properties of Adversarial ML Attacks in the Problem Space
+        </b>
+        <br>
+        Fabio Pierazzi (King's College London), Feargus Pendlebury (King's College London &amp; Royal Holloway, University of London &amp; The Alan Turing Institute), Jacopo Cortellazzi (King's College London), Lorenzo Cavallaro (King's College London)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Is FIDO2 the Kingslayer of User Authentication? A Comparative Usability Study of FIDO2 Passwordless Authentication
+        </b>
+        <br>
+        Sanam Ghorbani Lyastani (CISPA Helmholtz Center for Information Security, Germany), Michael Schilling (CISPA Helmholtz Center for Information Security, Germany), Michaela Neumayr (CISPA Helmholtz Center for Information Security, Germany), Michael Backes (CISPA Helmholtz Center for Information Security, Germany), Sven Bugiel (CISPA Helmholtz Center for Information Security, Germany)
+      </div>
+      <div class="list-group-item">
+        <b>
+          JIT Leaks: Inducing Timing Side Channels through Just-In-Time Compilation
+        </b>
+        <br>
+        Tegan Brennan (University of California, Santa Barbara), Nicolás Rosner (University of California, Santa Barbara), Tevfik Bultan (University of California, Santa Barbara)
+      </div>
+      <div class="list-group-item">
+        <b>
+          KARONTE: Detecting Insecure Multi-binary Interactions in Embedded Firmware
+        </b>
+        <br>
+        Nilo Redini (University of California, Santa Barbara), Aravind Machiry (University of California, Santa Barbara), Ruoyu Wang (Arizona State University), Chad Spensky (University of California, Santa Barbara), Andrea Continella (University of California, Santa Barbara), Yan Shoshitaishvili (Arizona State University), Christopher Kruegel (University of California, Santa Barbara), Giovanni Vigna (University of California, Santa Barbara)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Kobold: Evaluating Decentralized Access Control for Remote NSXPC Methods on iOS
+        </b>
+        <br>
+        Luke Deshotels (North Carolina State University / Samsung Research America), Costin Caraba� (University POLITEHNICA of Bucharest), Jordan Beichler (North Carolina State University), R�zvan Deaconescu (University POLITEHNICA of Bucharest), William Enck (North Carolina State University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Krace: Data Race Fuzzing for Kernel File Systems
+        </b>
+        <br>
+        Meng Xu (Georgia Institute of Technology), Sanidhya Kashyap (Georgia Institute of Technology), Hanqing Zhao (Georgia Institute of Technology), Taesoo Kim (Georgia Institute of Technology)
+      </div>
+      <div class="list-group-item">
+        <b>
+          LVI:  Hijacking Transient Execution through Microarchitectural Load Value Injection
+        </b>
+        <br>
+        Jo Van Bulck (imec-DistriNet, KU Leuven), Daniel Moghimi (Worchester Polytechnic Institute), Michael Schwarz (Graz University of Technology), Moritz Lipp (Graz University of Technology), Marina Minkin (University of Michigan), Daniel Genkin (University of Michigan), Yuval Yarom (University of Adalaide and Data61), Berk Sunar (Worchester Polytechnic Institute), Daniel Gruss (Graz University of Technology), Frank Piessens (imec-DistriNet, KU Leuven)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Leveraging EM Side-Channel Information to Detect Rowhammer Attacks
+        </b>
+        <br>
+        Zhenkai Zhang (Texas Tech University), Zihao Zhan (Vanderbilt University), Daniel Balasubramanian (Vanderbilt University), Bo Li (Univeristy of Illinios at Urbana-Champaign), Peter Volgyesi (Vanderbilt University), Xenofon Koutsoukos (Vanderbilt University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          MarkUs: Drop-in use-after-free prevention for low-level languages
+        </b>
+        <br>
+        Sam Ainsworth (University of Cambridge), Timothy Jones (University of Cambridge)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Meddling Middlemen: Empirical Analysis of the Risks of Data-Saving Mobile Browsers
+        </b>
+        <br>
+        Brian Kondracki (Stony Brook University), Assel Aliyeva (Boston University), Manuel Egele (Boston University), Jason Polakis (University of Illinios at Chicago), Nick Nikiforakis (Stony Brook University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Message Time of Arrival Codes: A Fundamental Primitive for Secure Distance Measurement
+        </b>
+        <br>
+        Patrick Leu (ETH Zurich), Mridula Singh (ETH Zurich), Marc Roeschlin (ETH Zurich), Kenneth Paterson (ETH Zurich), Srdjan Capkun (ETH Zurich)
+      </div>
+      <div class="list-group-item">
+        <b>
+          NetCAT:  Practical Cache Attacks for the Network
+        </b>
+        <br>
+        Michael Kurth (Vrije Universiteit Amsterdam, The Netherlands; ETH Zurich, Switzerland), Ben Gras (Vrije Universiteit Amsterdam, The Netherlands), Dennis Andriesse (Vrije Universiteit Amsterdam, The Netherlands), Cristiano Giuffrida (Vrije Universiteit Amsterdam, The Netherlands), Herbert Bos (Vrije Universiteit Amsterdam, The Netherlands), Kaveh Razavi (Vrije Universiteit Amsterdam, The Netherlands)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Neutaint: Efficient Dynamic Taint Analysis with Neural Networks
+        </b>
+        <br>
+        Dongdong She (Columbia University), Yizheng Chen (Columbia University), Abhishek Shah (Columbia University), Baishakhi Ray (Columbia University), Suman Jana (Columbia University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          OAT: Attesting Operation Integrity of Embedded Devices
+        </b>
+        <br>
+        Zhichuang Sun (Northeastern University), Bo Feng (Northeastern University), Long Lu (Northeastern University), Somesh Jha (University of Wisconsin-Madison)
+      </div>
+      <div class="list-group-item">
+        <b>
+          OHIE: Blockchain Scaling Made Simple
+        </b>
+        <br>
+        Haifeng Yu (National University of Singapore), Ivica Nikolic (National University of Singapore), Ruomu Hou (National University of Singapore), Prateek Saxena (National University of Singapore)
+      </div>
+      <div class="list-group-item">
+        <b>
+          PMP: Cost-effective Forced Execution with Probabilistic Memory Pre-planning
+        </b>
+        <br>
+        Wei You (Purdue University), Zhuo Zhang (Purdue University), Yonghwi Kwon (University of Virginia), Yousra Aafer (Purdue University), Fei Peng (Purdue University), Yu Shi (Purdue University), Carson Harmon (Purdue University), Xiangyu Zhang (Purdue University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Pangolin:Incremental Hybrid Fuzzing with Polyhedral Path Abstraction
+        </b>
+        <br>
+        Heqing Huang (The Hong Kong University of Science and Technology), Peisen Yao (The Hong Kong University of Science and Technology), Rongxin Wu (Xiamen University), Qingkai Shi (The Hong Kong University of Science and Technology), Charles Zhang (The Hong Kong University of Science and Technology)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Path Oblivious Heap: Optimal and Practical Oblivious Priority Queue
+        </b>
+        <br>
+        Elaine Shi (Cornell University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Plundervolt: Software-based Fault Injection Attacks against Intel SGX
+        </b>
+        <br>
+        Kit Murdock (University of Birmingham), David Oswald (University of Birmingham), Flavio Garcia (University of Birmingham), Jo Van Bulck (imec-DistriNet, KU Leuven), Daniel Gruss (Graz University of Technology), Frank Piessens (imec-DistriNet, KU Leuven)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Privacy Risks of General-Purpose Language Models
+        </b>
+        <br>
+        Xudong Pan (Fudan University), Mi Zhang (Fudan University), Shouling Ji (Zhejiiang University / Alibaba-Zhejiang University Joint Research Institute of Frontier Technologies), Min Yang (Fudan University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Private Resource Allocators and Their Applications
+        </b>
+        <br>
+        Sebastian Angel (University of Pennsylvania), Sampath Kannan (University of Pennsylvania), Zachary Ratliff (Raytheon BBN Technologies)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Pseudorandom Black Swans: Cache Attacks on CTR_DRBG
+        </b>
+        <br>
+        Shaanan Cohney (University of Pennsylvania), Andrew Kwong (University of Michigan), Sharar Paz (Tel Aviv University), Daniel Genkin (University of Michigan), Nadia Heninger (University of California, San Diego), Eyal Ronen (Tel Eviv University / COSIC), Yuval Yarom (University of Adalaide / Data61)
+      </div>
+      <div class="list-group-item">
+        <b>
+          RAMBleed:  Reading Bits in Memory Without Accessing Them
+        </b>
+        <br>
+        Andrew Kwong (University of Michigan), Daniel Genkin (University of Michigan), Daniel Gruss (Graz University of Technology), Yuval Yarom (University of Adalaide and Data61)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Replicated State Machines Without Replicated Execution
+        </b>
+        <br>
+        Jonathan Lee (Microsoft Research), Kirill Nikitin (EPFL), Srinath Setty (Microsoft Research)
+      </div>
+      <div class="list-group-item">
+        <b>
+          RetroWrite: Statically Instrumenting COTS Binaries for Fuzzing and Sanitization
+        </b>
+        <br>
+        Sushant Dinesh (Purdue University), Nathan Burow (Purdue University), Dongyan Xu (Purdue University), Mathias Payer (EPFL)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Rigorous Engineering for Hardware Security:  Formal Modelling and Proof in the CHERI Design and Implementation Process
+        </b>
+        <br>
+        Kyndylan Nienhuis (University of Cambridge), Alexandre Joannou (University of Cambridge), Thomas Bauereiss (University of Cambridge), Anthony Fox (ARM Limited), Michael Roe (University of Cambridge), Brian Campbell (University of Edinburgh), Matthew Naylor (University of Cambridge), Robert Norton (University of Cambridge), Simon Moore (University of Cambridge), Peter Neumann (SRI International), Ian Stark (University of Edinburgh), Robert Watson (University of Cambridge), Peter Sewell (University of Cambridge)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SAVIOR: Towards Bug-Driven Hybrid Testing
+        </b>
+        <br>
+        Yaohui Chen (Northeastern University), Peng Li (Baidu USA), Jun Xu (Stevens Institute of Technology), Shengjian Guo (Baidu USA), Rundong Zhou (Baidu USA), Yulong Zhang (Baidu USA), Tao Wei (Baidu USA), Long Lu (Northeastern University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SEIMI: Efficient and Secure SMAP-Enabled Intra-process Memory Isolation
+        </b>
+        <br>
+        Zhe Wang (Institute of Computing Technology, CAS, University of Chinese Academy of Sciences), Chenggang Wu (Institute of Computing Technology, CAS, University of Chinese Academy of Sciences), Mengyao Xie (Institute of Computing Technology, CAS, University of Chinese Academy of Sciences), Yinqian Zhang (The Ohio State University), Kangjie Lu (University of Minnesota), Xiaofeng Zhang (Institute of Computing Technology, CAS, University of Chinese Academy of Sciences), Yuanming Lai (Institute of Computing Technology, CAS, University of Chinese Academy of Sciences), Yang Kang (Institute of Computing Technology, CAS), Min Yang (Fudan University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SEVurity: No Security Without Integrity - Breaking Integrity-Free Memory Encryption with Minimal Assumptions
+        </b>
+        <br>
+        Luca Wilke (University of Lübeck), Jan Wichelmann (University of Lübeck), Mathias Morbitzer (Fraunhofer AISEC), Thomas Eisenbarth (University of Lübeck)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SPECCFI:  Mitigating Spectre Attacks Using CFI Imformed Speculation
+        </b>
+        <br>
+        Esmaeil Mohammadian Koruyeh (University of California, Riverside), Shirin Hajl Amin Shirazi (University of California, Riverside), Khaled Khasawneh (George Mason University), Chengyu Song (University of California, Riverside), Nael Abu-Ghazaleh (University of California, Riverside)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SPIDER: Enabling Fast Patch Propagation in Related Software Repositories
+        </b>
+        <br>
+        Aravind Machiry (University of California, Santa Barbara), Nilo Redini (University of California, Santa Barbara), Eric Camellini (Politecnico di Milano), Christopher Kruegel (University of California, Santa Barbara), Giovanni Vigna (University of California, Santa Barbara)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Security Update Labels: Establishing Economic Incentives for Security Patching of IoT Consumer Products
+        </b>
+        <br>
+        Philipp Morgner (Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)), Christoph Mai (Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)), Nicole Koschate-Fischer (Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)), Felix Freiling (Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)), Zinaida Benenson (Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU))
+      </div>
+      <div class="list-group-item">
+        <b>
+          Semantic Understanding of Smart Contracts: Executable Operational Semantics of Solidity
+        </b>
+        <br>
+        Jiao Jiao (Nanyang Technological University), Shuanglong Kan (Nanyang Technological University), Shang-Wei Lin (Nanyang Technological University), David Sanán (Nanyang Technological University), Yang Liu (Nanyang Technological University), Jun Sun (Singapore Management University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: A Minimalist Approach to Formalizing Analog Sensor Security
+        </b>
+        <br>
+        Chen Yan (Zhejiang University), Hocheol Shin (KAIST), Connor Bolton (University of Michigan), Wenyuan Xu (Zhejiang University), Yongdae Kim (KAIST), Kevin Fu (University of Michigan)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: Cyber Insurance - Technical Challenges and a System Security Roadmap
+        </b>
+        <br>
+        Savino Dambra (Eurecom), Leyla Bilge (Symantec Research Labs), Davide Balzarotti (Eurecom)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: Differential Privacy as a Causal Property
+        </b>
+        <br>
+        Michael Carl Tschantz (International Computer Science Institute), Shayak Sen (Carnegie Melon University), Anupam Datta (Carnegie Melon University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: Understanding the Prevailing Security Vulnerabilities in TrustZone-assisted TEE Systems
+        </b>
+        <br>
+        David Cerdeira (Universidade do Minho), Nuno Santos (INESC-ID / Instituto Superior Técnico, Universidade de Lisboa), Pedro Fonseca (Purdue University), Sandro Pinto (Universidade do Minho)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Spectector:  Principled Detection of Speculative Information Flows
+        </b>
+        <br>
+        Marco Guarnieri (IMDEA Software Institute), Boris Köpf (Microsoft Research), José Morales (IMDEA Software Institute), Jan Reineke (Saarland University), Andrés Sánchez (IMDEA Software Institute)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Sync HotStuff: Simple and Practical Synchronous State Machine Replication
+        </b>
+        <br>
+        Ittai Abraham (Vmware Research), Dahlia Malkhi (Calibra), Kartik Nayak (Duke University), Ling Ren (University of Illinois at Urbana-Champaign), Maofan Yin (Cornell University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          TARDIS: Rolling Back The Clock On CMS-Targeting Cyber Attacks
+        </b>
+        <br>
+        Ranjita Pai Kasturi (Georgia Institute of Technology), Yiting Sun (Georgia Institute of Technology), Ruian Duan (Georgia Institute of Technology), Omar Alrawi (Georgia Institute of Technology), Ehsan Asdar (Georgia Institute of Technology), Victor Zhu (Georgia Institute of Technology), Yonghwi Kwon (University of Virginia), Brendan Saltaformaggio (Georgia Institute of Technology)
+      </div>
+      <div class="list-group-item">
+        <b>
+          TRRespass:  Exploiting the Many Sides of Target Row Refresh
+        </b>
+        <br>
+        Pietro Frigo (Vrije Universiteit Amsterdam, The Netherlands), Emanuele Vannacci (Vrije Universiteit Amsterdam, The Netherlands), Hasan Hassan (ETH Zürich), Victor van der Veen (Qualcomm Technologies, Inc.), Onur Mutlu (ETH Zürich), Cristiano Giuffrida (Vrije Universiteit Amsterdam, The Netherlands), Herbert Bos (Vrije Universiteit Amsterdam, The Netherlands), Kaveh Razavi (Vrije Universiteit Amsterdam, The Netherlands)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Tactical Provenance Analysis for Endpoint Detection and Response Systems
+        </b>
+        <br>
+        Wajih Ul Hassan (University of Illinois at Urbana-Champaign), Adam Bates (University of Illinois at Urbana-Champaign), Daniel Marino (NortonLifeLock Research Group)
+      </div>
+      <div class="list-group-item">
+        <b>
+          TextExerciser: Feedback-driven Text Input Exercising for Android Applications
+        </b>
+        <br>
+        Yuyu He (Fudan University), Lei Zhang (Fudan University), Zhemin Yang (Fudan University), Yinzhi Cao (Johns Hopkins University), Keke Lian (Fudan University), Shuai Li (Fudan University), Wei Yang (University of Texas at Dallas), Zhibo Zhang (Fudan University), Min Yang (Fudan University), Yuan Zhang (Fudan University), Haixin Duan (Fudan University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          The Last Mile:  High-Assurance and High-Speed Cryptographic Implementations
+        </b>
+        <br>
+        José Bacelar Almeida (University of Minho / INESC TEC), Manuel Barbosa (University of Porto (FCUP) / INESC TEC), Gilles Barthe (MPI for Security and Privacy / IMDEA Software), Benjamin Grégoire (Inria), Adrien Koutsos (LSV, CNRS, ENS Paris-Saclay), Vincent Laporte (Inria), Tiago Oliveira (University of Porto (FCUP) / INESC TEC), Pierre-Yves Strub (Ecole Polytechnique)
+      </div>
+      <div class="list-group-item">
+        <b>
+          The Many Kinds of Creepware Used for Interpersonal Attacks
+        </b>
+        <br>
+        Kevin Roundy (NortonLifeLock Research Group), Paula Barmaimon Mendelberg (Cornell Tech), Nicola Dell (Cornell Tech), Damon McCoy (New York University), Daniel Nissani (Cornell Tech), Thomas Ristenpart (Cornell Tech), Acar Tamersoy (NortonLifeLock Research Group)
+      </div>
+      <div class="list-group-item">
+        <b>
+          The State of the Uniform: Attacks on Encrypted Databases Beyond the Uniform Query Distribution
+        </b>
+        <br>
+        Evgenios Kornaropoulos (UC Berkeley), Charalampos Papamanthou (University of Maryland), Roberto Tamassia (Brown University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          The Value of Collaboration in Convex Machine Learning with Differential Privacy
+        </b>
+        <br>
+        Nan Wu (Macquarie University), Farhad Farokhi (CSIRO's Data61 / The University of Melbourne), David Smith (CSIRO's Data61 / Austrailian National University), Mohamed Ali Kaafar (CSIRO's Data61 / Macquarie University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          This PIN Can Be Easily Guessed: Analyzing the Security of Smartphone Unlock PINs
+        </b>
+        <br>
+        Philipp Markert (Ruhr University Bochum), Daniel Bailey (Ruhr University Bochum), Maximilian Golla (Max Planck Institute for Security and Privacy), Markus Dürmuth (Ruhr University Bochum), Adam Aviv (The George Washington University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Throwing Darts in the Dark? Detecting Bots with Limited Data using Neural Data Augmentation
+        </b>
+        <br>
+        Steve T.K. Jan (University of Illinios at Urbana-Champaign / Virginia Tech), Qingying Hao (University of Illinios at Urbana-Champaign), Tianrui Hu (Virginia Tech), Jiameng Pu (Virginia Tech), Sonal Oswal (Radware, Isreal), Gang Wang (University of Illinios at Urbana-Champaign), Bimal Viswanath (Virginia Tech)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Towards Effective Differential Privacy Communication for Users' Data Sharing Decision and Comprehension
+        </b>
+        <br>
+        Aiping Xiong (Penn State University), Tianhao Wang (Purdue University), Ninghui Li (Purdue University), Somesh Jha (University of Wisconsin-Madison)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Towards Scalable Threshold Cryptosystems
+        </b>
+        <br>
+        Alin Tomescu (MIT CSAIL), Robert Chen (MIT PRIMES / Lexington High School), Yiming Zheng (MIT PRIMES / Lexington High School), Ittai Abraham (VMware Research), Benny Pinkas (VMware Research / Bar Ilan University), Guy Golan Gueta (VMware Research), Srinivas Devadas (MIT CSAIL)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Towards a Natural Perspective of Smart Homes for Practical Security and Safety Analyses
+        </b>
+        <br>
+        Sunil Manandhar (William &amp; Mary), Kevin Moran (William &amp; Mary), Kaushal Kafle (William &amp; Mary), Ruhao Tang (William &amp; Mary), Denys Poshyvanyk (William &amp; Mary), Adwait Nadkarni (William &amp; Mary)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Transparent Polynomial Delegation and Its Applications to Zero Knowledge Proof
+        </b>
+        <br>
+        Jiaheng Zhang (UC Berkeley), Tiancheng Xie (UC Berkeley), Yupeng Zhang (Texas A&amp;M University), Dawn Song (UC Berkeley)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Transys: Leveraging Common Security Properties Across Hardware Designs
+        </b>
+        <br>
+        Rui Zhang (University of North Carolina at Chapel Hill), Cynthia Sturton (University of North Carolina at Chapel Hill)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Unexpected Data Dependency Creation and Chaining: A New Attack to SDN
+        </b>
+        <br>
+        Feng Xiao (The Pennsylvania State University), Jinquan Zhang (The Pennsylvania State University), Jianwei Huang (Texas A&amp;M University), Guofei Gu (Texas A&amp;M University), Dinghao Wu (The Pennsylvania State University), Peng Liu (The Pennsylvania State University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          VerX: Safety Verification of Smart Contracts
+        </b>
+        <br>
+        Anton Permenev (ChainSecurity), Dimitar Dimitrov (ETH Zurich), Petar Tsankov (ChainSecurity), Dana Drachsler-Cohen (ETH Zurich), Martin Vechev (ETH Zurich)
+      </div>
+      <div class="list-group-item">
+        <b>
+          VeriSmart: A Highly Precise Safety Verifier for Ethereum Smart Contracts
+        </b>
+        <br>
+        Sunbeom So (Korea University), Myungho Lee (Korea University), Jisu Park (Korea University), Heejo Lee (Korea University), Hakjoo Oh (Korea University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          WaveSpy: Remote and Through-wall Screen Attack via mmWave Sensing
+        </b>
+        <br>
+        Zhengxiong Li (University of Buffalo, SUNY), Fenglong Ma (University of Buffalo, SUNY), Aditya Singh Rathore (University of Buffalo, SUNY), Zhuolin Yang (University of Buffalo, SUNY), Baicheng Chen (University of Buffalo, SUNY), Lu Su (University of Buffalo, SUNY), Wenyao Xu (University of Buffalo, SUNY)
+      </div>
+      <div class="list-group-item">
+        <b>
+          ZEXE: Enabling Decentralized Private Computation
+        </b>
+        <br>
+        Sean Bowe (Zcash), Alessandro Chiesa (University of California, Berkeley), Matthew Green (Johns Hopkins University), Ian Miers (Cornell Tech), Pratyush Mishra (University of California, Berkeley), Howard Wu (University of California, Berkeley)
+      </div>
+      <div class="list-group-item">
+        <b>
+          _ I Know Where You Parked Last Summer _ Automated Reverse Engineering and Privacy Analysis of Modern Cars
+        </b>
+        <br>
+        Daniel Frassinelli (CISPA Helmholtz Center for Information Security, Saarland Informatics Campus, Germany), Sohyeon Park (CISPA Helmholtz Center for Information Security, Saarland Informatics Campus, Germany), Stefan Nürnberger (CISPA Helmholtz Center for Information Security, Saarland Informatics Campus, Germany)
+      </div>
+      <div class="list-group-item">
+        <b>
+          xMP: Selective Memory Protection for Kernel and User Space
+        </b>
+        <br>
+        Sergej Proskurin (Technical University of Munich), Marius Momeu (Technical University of Munich), Seyedhamed Ghavamnia (Stony Brook University), Vasileios Kemerlis (Brown University), Michalis Polychronakis (Stony Brook University)
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <footer class="footer hidden-xs">
+      <div class="container text-center">
+        <a href="http://www.ieee.org"><img src="images/logo-ieee.jpg" height="44" alt="IEEE"></a>
+        <a href="http://www.computer.org"><img src="images/logo-ieee-cs.gif" height="44" alt="IEEE Computer Society" style="padding: 0ex 4ex"></a>
+        <a href="http://www.ieee-security.org"><img src="images/trojan.png" height="44" alt="IEEE Technical Committee on Security and Privacy"></a>
+      </div>
+    </footer>
+
+  </body>
+</html>

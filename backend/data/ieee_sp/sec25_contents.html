@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>IEEE Symposium on Security and Privacy 2024</title>
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- icons -->
+    <link href="images/favicon.png" rel="icon" type="image/png">
+    <link href="images/favicon.png" rel="apple-touch-icon" type="image/png">
+
+    <!-- bootstrap -->
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+    <!-- glyphs -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="css/webfonts.css" type="text/css">
+
+    <!-- custom css -->
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
+    <!-- workaround for ie 7, 8 -->
+    <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+
+    <!-- google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-80995671-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+	<script src="https://s3-us-west-2.amazonaws.com/ieeeshutpages/gdpr/settings.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+	<script>
+		window.addEventListener("load", function(){
+		 window.cookieconsent.initialise(json)
+		});
+	</script>
+  </head>
+  <body onLoad="updateCfPDeadline()">
+
+    <!-- https://github.com/twbs/bootstrap/issues/10601 -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="banner">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">S &amp; P</a>
+        </div>
+        <div class="collapse navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html"><i class="fa fa-home"></i> &nbsp; Home</a></li>
+
+             
+              <li class="dropdown active">
+               
+             
+ <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Program <i class="fa fa-caret-down"></i>
+              </a>
+             
+              
+             
+
+              <ul class="dropdown-menu">  
+                <!-- <li><a href="program-compact.html">Program (Compact)</a></li> -->
+                <!-- <li><a href="program.html">Program</a></li> -->
+                <!--<li><a href="program-papers.html">Accepted Papers</a></li>--> 
+                <!-- <li><a href="program-posters.html">Posters</a></li> -->
+                <!-- <li><a href="program-shorttalks.html">Short Talks</a></li> -->
+		<!-- <li><a href="presenters.html">Symposium Presenter Information</a></li> -->
+               </ul>
+
+               
+
+            </li> 
+            
+
+
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Call For... &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="cfpapers.html">Papers</a></li>
+                <!-- <li><a href="cfdonors.html">Donors</a></li>  --> 
+                <!-- <li><a href="shadowpc.html">Shadow PCs</a></li> -->
+                <!-- <li><a href="cftalks.html">Short Talks</a></li> -->
+                <!-- <li><a href="cfposters.html">Posters</a></li> -->
+                <li><a href="cfworkshops.html">Workshops</a></li>
+		<!-- <li><a href="cfdonors.html">Donors</a></li>--> 
+                <!-- <li><a href="cfdonors.html">Donors</a></li> --> 
+                <!-- <li><a href="studentpc.html">Student PC</a></li> -->
+              </ul>
+
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Attend &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+               <!-- <li><a href="venue.html">Venue Info</a></li> -->
+               <!-- <li><a>Registration (Not Open)</a></li> -->
+               <!-- <li><a href="travel_grants.html">Student Travel Grants</a></li> -->
+               <li><a href="codeofconduct.html">Attendee Code of Conduct</a></li>
+              </ul>
+            </li>
+
+
+             <li class="dropdown">
+              
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Workshops &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              
+             
+              <!--
+
+              <ul class="dropdown-menu">
+                <li><a href="workshops.html">General Info</a></li>
+              </ul>
+		-->
+		              
+
+            </li> 
+
+
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+<!-- comment press page
+            <li class="hidden-sm"><a href="press.html">Press</a></li>
+end press -->
+            <li class="hidden-sm">
+              <a href="https://twitter.com/ieeessp">
+                <i class="fa fa-twitter hidden-xs"></i>
+                <span class="visible-xs">Twitter</span>
+              </a>
+            </li>
+
+            <li class="hidden-sm">
+              <a href="https://www.facebook.com/ieeessp">
+                <i class="fa fa-facebook hidden-xs"></i>
+                <span class="visible-xs">Facebook</span>
+              </a>
+            </li>
+            <li class="hidden-sm">
+              <a href="http://www.linkedin.com/groups?gid=7403306">
+                <i class="fa fa-linkedin hidden-xs"></i>
+                <span class="visible-xs">LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="contact.html">
+                <i class="fa fa-envelope hidden-xs"></i>
+                <span class="visible-xs">Contact</span>
+              </a>
+            </li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                About &nbsp; <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+               <li><a href="past.html">Past Conferences</a></li>
+               <li><a href="organizers.html">Conference Organizers</a></li>
+               <li><a href="https://www.ieee-security.org/index.html">Technical Committee</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <p class="location">
+          
+              MAY 20-23, 2024 
+               AT THE
+              HILTON SAN FRANCISCO UNION SQUARE,
+              SAN FRANCISCO, CA 
+          
+        </p>
+
+        <p class="title">
+          
+              45th IEEE Symposium on<br>Security and Privacy
+          
+        </p>
+
+        <p class="sponsors hidden-xs">
+          Sponsored by the <a class="jumbotron_link" href="http://ieee-security.org/">IEEE Computer Society Technical
+              Committee on Security and Privacy</a> in cooperation with the <a
+              class="jumbotron_link" href="http://www.iacr.org">International Association for Cryptologic Research</a>
+        </p>
+<!--        <p class="sponsors">
+          Registration Button
+          <a class="btn btn-default btn-lg">
+            <i class="fa fa-chevron-circle-right fa-lg"></i>&nbsp;&nbsp; Register (not open)
+          </a>
+        </p>
+-->
+      </div>
+    </div>
+
+    <div class="container">
+<h1 id="accepted-papers">Accepted Papers</h1>
+<h3 id="first-cycle">First Cycle</h3>
+<hr />
+
+<div class="panel-group" id="all">
+  <div class="panel panel-default">
+    <div class="panel-body" style="padding-bottom: 1ex">
+      <div class="list-group-item">
+        <b>
+          FedRecover: Recovering from Poisoning Attacks in Federated Learning using Historical Information
+        </b>
+        <br />
+        Xiaoyu Cao (Duke University), Jinyuan Jia (Duke University), Zaixi Zhang (University of Science and Technology of China), Neil Zhenqiang Gong (Duke University) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          It�s (DOM) Clobbering Time: Attack Techniques, Prevalence, and Defenses
+        </b>
+        <br />
+        Soheil Khodayari (CISPA Helmholtz Center for Information Security Germany), Giancarlo Pellegrino (CISPA Helmholtz Center for Information Security Germany) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          Private, Efficient, and Accurate: Protecting Models Trained by Multi-party Learning with Differential Privacy
+        </b>
+        <br />
+        Wenqiang Ruan (Fudan University China), Mingxin Xu (Fudan University China), Wenjing Fnag (Ant Group China), Li Wang (Ant Group China), Lei Wang (Ant Group China), Weili Han (Fudan University China)
+      </div>
+      <div class="list-group-item">
+        <b>
+          D-DAE: Defense-Penetrating Model Extraction Attacks
+        </b>
+        <br />
+        Yanjiao Chen (Zhejiang University), Rui Guan (Wuhan University), Xueluan Gong (Wuhan University), Jianshuo Dong (Wuhan University), Meng Xue (Wuhan University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Examining Zero-Shot Vulnerability Repair with Large Language Models
+        </b>
+        <br />
+        Hammond Pearce (New York University), Benjamin Tan (University of Calgary), Baleegh Ahmad (New York University), Ramesh Karri (New York University), Brendan Dolan-Gavitt (New York University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Toss a Fault to Your Witcher: Applying Grey-box Coverage-Guided Mutational Fuzzing to Detect SQL and Command Injection Vulnerabilities
+        </b>
+        <br />
+        Erik Trickel (Arizona State University), Fabio Pagani (UC Santa Barbra), Chang Zhu (Arizona State University), Lukas Dresel (UC Santa Barbra), Giovanni Vigna (UC Santa Barbara), Christopher Kruegel (UC Santa Barbara), Ruoyu Wang (Arizona State University), Tiffany Bao (Arizona State University), Yan Shoshitaishvili (Arizona State University), Adam Doupe (Arizona State University)
+      </div>
+      <div class="list-group-item">
+        <b>
+          WeRLman: To Tackle Whale (Transactions), Go Deep (RL)
+        </b>
+        <br />
+        Roi Bar-Zur (Technion IC3), Ameer Abu-Hanna (Technion), Ittay Eyal (Technion IC3), Aviv Tamar (Technion)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Vulnerability Discovery for All: Experiences of Marginalization in Vulnerability Discovery
+        </b>
+        <br />
+        Kelsey R. Fulton (University of Maryland), Samantha Katcher (Tufts University), Kevin Song (University of Chicago), Marshini Chetty (University of Chicago), Michelle L. Mazurek (University of Maryland), Daniel Votipka (Tufts University), Chloé Messdaghi (Impactive Consulting) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          SQUIP: Exploiting the Scheduler Queue Contention Side Channel
+        </b>
+        <br />
+        Stefan Gast (Lamarr Security Research Graz University of Technology), Jonas Juffinger (Lamarr Security Research Graz University of Technology), Martin Schwarzl (Graz University of Technology), Gururaj Saileshwar (Georgia Institute of Technology), Andreas Kogler (Graz University of Technology), Simone Franza (Graz University of Technology), Markus Köstl (Graz University of Technology), Daniel Gruss (Lamarr Security Research Graz University of Technology) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: Taxonomy of Attacks on Open-Source Software Supply Chains
+        </b>
+        <br />
+        Piergiorgio Ladisa (SAP Security Research  Université de Rennes 1), Henrik Plate (SAP Security Research), Matias Martinez (Université Polytechnique Hauts-de-France), Olivier Barais (Université de Rennes 1 Inria IRISA)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: History is a Vast Early Warning System: Auditing the Provenance of System Intrusions
+        </b>
+        <br />
+        Muhammad Adil Inam (University of Illinois at Urbana-Champaign), Yinfang Chen (University of Illinois at Urbana-Champaign), Akul Goyal (University of Illinois at Urbana-Champaign), Jason Liu (University of Illinois at Urbana-Champaign), Jaron Mink (University of Illinois at Urbana-Champaign), Noor Michael (University of Illinois at Urbana-Champaign), Sneha Gaur (University of Illinois at Urbana-Champaign), Adam Bates (University of Illinois at Urbana-Champaign), Wajih Ul Hassan (University of Virginia) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          No One Drinks From the Firehose: How Organizations Filter and Prioritize Vulnerability Information
+        </b>
+        <br />
+        Stephanie de Smale (National Cyber Security Centre The Netherlands &amp; Delft University of Technology The Netherlands), Rik van Dijk (National Cyber Security Centre The Netherlands), Xander Bouwman (Delft University of Technology The Netherlands), Jeroen van der Ham (National Cyber Security Centre The Netherlands &amp; University of Twente The Netherlands), Michel van Eeten (Delft University of Technology The Netherlands)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Rethinking Searchable Symmetric Encryption
+        </b>
+        <br />
+        Zichen Gui (ETH Zurich Switzerland), Kenneth G. Paterson (ETH Zurich Switzerland), Sikhar Patranabis (IBM Research India) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: A Critical Evaluation of Efficient Website Fingerprinting Defenses
+        </b>
+        <br />
+        Nate Mathews (Rochester Institute of Technology), James K Holland (University of Minnesota), Se Eun Oh (Ewha Womans University), Mohammad Saidur Rahman (Rochester Institute of Technology), Nicholas Hopper (University of Minnesota), Matthew Wright (Rochester Institute of Technology)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: Certified Robustness for Deep Neural Networks
+        </b>
+        <br />
+        Linyi Li (University of Illinois Urbana-Champaign USA), Tao Xie (Key Laboratory of High Confidence Software Technologies MoE (Peking University) China), Bo Li (University of Illinois Urbana-Champaign USA)
+      </div>
+      <div class="list-group-item">
+        <b>
+          GraphSPD: Graph-Based Security Patch Detection with Enriched Code Semantics
+        </b>
+        <br />
+        Shu Wang (George Mason University USA), Xinda Wang (George Mason University USA), Kun Sun (George Mason University USA), Sushil Jajodia (George Mason University USA), Haining Wang (Virginia Tech USA), Qi Li (Tsinghua University China) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          AEM: Facilitating Cross-Version Exploitability Assessment of Linux Kernel Vulnerabilities
+        </b>
+        <br />
+        Zheyue Jiang (Fudan University), Yuan Zhang (Fudan University), Jun Xu (University of Utah), Xinqian Sun (Fudan University), Zhuang Liu (Fudan University), Min Yang (Fudan University) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          Man-in-the-Middle Attacks without Rogue AP: When WPAs Meet ICMP Redirects
+        </b>
+        <br />
+        Xuewei Feng (Tsinghua University China), Qi Li (Tsinghua University and Zhongguancun Lab China), Kun Sun (George Mason University USA), Yuxiang Yang (Tsinghua University), Ke Xu (Tsinghua University and Zhongguancun Lab China)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Inducing Wireless Chargers to Voice Out for Inaudible Command Attacks
+        </b>
+        <br />
+        Donghui Dai (The Hong Kong Polytechnic University China), Zhenlin An (The Hong Kong Polytechnic University China), Lei Yang (The Hong Kong Polytechnic University China) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          IPvSeeYou: Exploiting Leaked Identifiers in IPv6 for Street-Level Geolocation
+        </b>
+        <br />
+        Erik Rye (University of Maryland), Robert Beverly (CMAND)
+      </div>
+      <div class="list-group-item">
+        <b>
+          SCAPHY: Detecting Modern ICS Attacks by Correlating Behaviors in SCADA and PHYsical
+        </b>
+        <br />
+        Moses Ike (Georgia Institute of Technology USA), Kandy Phan (Sandia National Labs USA), Keaton Sadoski (Sandia National Labs USA), Romuald Valme (Sandia National Labs USA), Wenke Lee (Georgia Institute of Technology USA) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          Skilled or Gullible? Gender Stereotypes Related to Computer Security and Privacy
+        </b>
+        <br />
+        Miranda Wei (University of Washington USA), Pardis Emami-Naeini (Duke University USA), Franziska Roesner (University of Washington USA), Tadayoshi Kohno (University of Washington USA) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          PLA-LiDAR: Physical Laser Attacks against LiDAR-based 3D Object Detection in Autonomous Vehicle
+        </b>
+        <br />
+        Zizhi Jin (Zhejiang University), Ji Xiaoyu (Zhejiang University), Yushi Cheng (Tsinghua University), Bo Yang (Zhejiang University), Chen Yan (Zhejiang University), Wenyuan Xu (Zhejiang University) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          Towards a Rigorous Statistical Analysis of Empirical Password Datasets
+        </b>
+        <br />
+        Jeremiah Blocki (Purdue University USA), Peiyuan Liu (Purdue University USA)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Spectre Declassified: Reading from the Right Place at the Wrong Time
+        </b>
+        <br />
+        Basavesh Ammanaghatta Shivakumar (Max Planck Institute for Security and Privacy Germany), Jack Barnes (The University of Adelaide Australia), Gilles Barthe (Max Planck Institute for Security and Privacy Germany; IMDEA Software Institute Spain), Sunjay Cauligi (Max Planck Institute for Security and Privacy Germany), Chitchanok Chuengsatiansup (The University of Adelaide Australia), Daniel Genkin (Georgia Institute of Technology USA), Sioli O'Connell (The University of Adelaide Australia), Peter Schwabe (Max Planck Institute for Security and Privacy Germany; Radboud University Netherlands), Rui Qi Sim (The University of Adelaide Australia), Yuval Yarom (The University of Adelaide Australia)
+      </div>
+      <div class="list-group-item">
+        <b>
+          CSI:Rowhammer - Cryptographic Security and Integrity against Rowhammer
+        </b>
+        <br />
+        Jonas Juffinger (Lamarr Security Research Graz University of Technology Austria), Lukas Lamster (Graz University of Technology Austria), Andreas Kogler (Graz University of Technology Austria), Maria Eichlseder (Graz University of Technology Austria), Moritz Lipp (Amazon Web Services Austria), Daniel Gruss (Graz University of Technology Austria)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Blue's Clues: Practical Discovery of Non-Discoverable Bluetooth Devices
+        </b>
+        <br />
+        Tyler Tucker (University of Florida), Hunter Searle (University of Florida), Kevin Butler (University of Florida), Patrick Traynor (University of Florida)
+      </div>
+      <div class="list-group-item">
+        <b>
+          D-ARM: Disassembling ARM Binaries by Lightweight Superset Instruction Interpretation and Graph Modeling
+        </b>
+        <br />
+        Yapeng Ye (Purdue University USA), Zhuo Zhang (Purdue University USA), Qingkai Shi (Purdue University USA), Yousra Aafer (University of Waterloo Canada), Xiangyu Zhang (Purdue University USA)
+      </div>
+      <div class="list-group-item">
+        <b>
+          UTOPIA: Automatic Generation of Fuzz Driver using Unit Tests
+        </b>
+        <br />
+        Bokdeuk Jeong (Samsung Research Republic of Korea), Joonun Jang (Samsung Research Republic of Korea), Hayoon Yi (Samsung Research Republic of Korea), Jiin Moon (Samsung Research Republic of Korea), Junsik Kim (Samsung Research Republic of Korea), Intae Jeon (Samsung Research Republic of Korea), Taesoo Kim (Samsung Research Republic of Korea; Georgia Institute of Technology USA), WooChul Shim (Samsung Research Republic of Korea), Yong Ho Hwang (Samsung Research Republic of Korea)
+      </div>
+      <div class="list-group-item">
+        <b>
+          MEGA: Malleable Encryption Goes Awry
+        </b>
+        <br />
+        Matilda Backendal (ETH Zurich), Haller Miro (ETH Zurich), Kenneth G. Paterson (ETH Zurich)
+      </div>
+      <div class="list-group-item">
+        <b>
+          DeHiREC: Detecting Hidden Voice Recorders via ADC Electromagnetic Radiation
+        </b>
+        <br />
+        Ruochen Zhou (Zhejiang University), Xiaoyu Ji (Zhejiang University), Chen Yan (Zhejiang University), Yi-Chao Chen (Shanghai Jiao Tong University; Microsoft Research Asia), Wenyuan Xu (Zhejiang University), Chaohao Li (Zhejiang University) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          Shedding Light on Inconsistencies in Grid Cybersecurity: Disconnects and Recommendations
+        </b>
+        <br />
+        Brian Singer (Carnegie Mellon University), Amritanshu Pandey (Carnegie Mellon University), Shimiao Li (Carnegie Mellon University), Lujo Bauer (Carnegie Mellon University), Craig Miller (Carnegie Mellon University), Lawrence Pileggi (Carnegie Mellon University), Vyas Sekar (Carnegie Mellon University) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          FIDO2, CTAP 2.1, and WebAuthn 2: Provable Security and Post-Quantum Instantiation
+        </b>
+        <br />
+        Nina Bindel (SandboxAQ), Cas Cremers (CISPA Helmholtz Center for Information Security), Mang Zhao (CISPA Helmholtz Center for Information Security)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Clockwork Finance: Automated Analysis of Economic Security in Smart Contracts
+        </b>
+        <br />
+        Kushal Babel (Cornell Tech), Philip Daian (Cornell Tech), Mahimna Kelkar (Cornell Tech), Ari Juels (Cornell Tech) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          Could you clean up the Internet with a Pit of Tar? Investigating tarpit feasibility on Internet worms
+        </b>
+        <br />
+        Harm Griffioen (Hasso Plattner Institute for Digital Engineering University of Potsdam), Christian Doerr (Hasso Plattner Institute for Digital Engineering University of Potsdam)
+      </div>
+      <div class="list-group-item">
+        <b>
+          Detection of Inconsistencies in Privacy Practices of Browser Extensions
+        </b>
+        <br />
+        Duc Bui (University of Michigan United States of America), Brian Tang (University of Michigan United States of America), Kang G. Shin (University of Michigan United States of America)
+      </div>
+      <div class="list-group-item">
+        <b>
+          RAB: Provable Robustness Against Backdoor Attacks
+        </b>
+        <br />
+        Maurice Weber (ETH Zurich Switzerland), Xiaojun Xu (University of Illinois at Urbana-Champaign USA), Bojan Karlas (ETH Zurich Switzerland), Ce Zhang (ETH Zurich Switzerland), Bo Li (University of Illinois at Urbana-Champaign USA) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          SoK: Anti-Facial Recognition Technology
+        </b>
+        <br />
+        Emily Wenger (University of Chicago), Shawn Shan (University of Chicago), Haitao Zheng (University of Chicago), Ben Y. Zhao (University of Chicago) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          Deepfake Text Detection: Limitations and Opportunities
+        </b>
+        <br />
+        Jiameng Pu (Virginia Tech USA), Zain Sarwar (University Of Chicago USA), Sifat Muhammad Abdullah (Virginia Tech USA), Abdullah Rehman (Virginia Tech USA), Yoonjin Kim (Virginia Tech USA), Parantapa Bhattacharya (University Of Virginia USA), Mobin Javed (LUMS Pakistan), Bimal Viswanath (Virginia Tech USA) 
+      </div>
+      <div class="list-group-item">
+        <b>
+          PCspooF: Compromising the Safety of Time-Triggered Ethernet
+        </b>
+        <br />
+        Andrew Loveless (University of Michigan; NASA Johnson Space Center), Linh Thi Xuan Phan (University of Pennsylvania), Ronald Dreslinski (University of Michigan), Baris Kasikci (University of Michigan)
+      </div>
+      <div class="list-group-item">
+        <b>
+          "It's up to the Consumer to be Smart": Understanding the Security and Privacy Attitudes of Smart Home Users on Reddit
+        </b>
+        <br />
+        Jingjie Li (University of Wisconsin-Madison USA), Kaiwen Sun (University of Michigan USA), Brittany Skye Huff (University of Wisconsin-Madison USA), Anna Marie Bierley (University of Wisconsin-Madison USA), Younghyun Kim (University of Wisconsin-Madison USA), Florian Schaub (University of Michigan USA), Kassem Fawaz (University of Wisconsin-Madison USA)
+      </div>
+      <div class="list-group-item">
+        <b>
+          TEEzz: Fuzzing Trusted Applications on COTS Android Devices
+        </b>
+        <br />
+        Marcel Busch (EPFL), Aravind Machiry (Purdue University), Chad Spensky (Allthenticate), Giovanni Vigna (University of California Santa Barbara), Christopher Kruegel (University of California Santa Barbara), Mathias Payer (EPFL)
+      </div>
+      <div class="list-group-item">
+        <b>
+          "How technical do you get? I'm an English teacher": Teaching and Learning Cybersecurity and AI Ethics in High School
+        </b>
+        <br />
+        Zachary Kilhoffer (University of Illinois at Urbana-Champaign USA), Zhixuan Zhou (University of Illinois at Urbana-Champaign USA), Firmiana Wang (University of Illinois Laboratory High School USA), Fahad Tamton (University of Illinois at Urbana-Champaign USA), Yun Huang (University of Illinois at Urbana-Champaign USA), Pilyoung Kim (University of Denver USA), Tom Yeh (University of Colorado Boulder USA), Yang Wang (University of Illinois at Urbana-Champaign USA) 
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <footer class="footer hidden-xs">
+      <div class="container text-center">
+        <a href="http://www.ieee.org"><img src="images/logo-ieee.jpg" height="44" alt="IEEE"></a>
+        <a href="http://www.computer.org"><img src="images/logo-ieee-cs.gif" height="44" alt="IEEE Computer Society" style="padding: 0ex 4ex"></a>
+        <a href="http://www.ieee-security.org"><img src="images/trojan.png" height="44" alt="IEEE Technical Committee on Security and Privacy"></a>
+      </div>
+    </footer>
+
+  </body>
+</html>
