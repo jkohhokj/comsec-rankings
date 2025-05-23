@@ -62,7 +62,7 @@ export default function InstitutionFrequencyChart({
       clearTimeout(timeout);
       controller.abort();
     };
-  }, [yearStart, yearEnd]);
+  }, [yearStart, yearEnd, api]);
 
   return (
     <div className="w-full p-4">
