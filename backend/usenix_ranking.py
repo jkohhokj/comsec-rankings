@@ -4,11 +4,21 @@ import json
 import fitz  # PyMuPDF
 
 
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import json
-from urllib.parse import urlparse, parse_qs
+from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
+from typing import Optional
+import uvicorn
 
+app = FastAPI()
 
+# Enable CORS (like your previous headers)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust as needed
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 pdf_paths = {
     "2015": "data/usenix/sec15_contents.pdf",
@@ -138,63 +148,23 @@ def process_multiple_sources(pdf_paths):
         
 
 
+@app.get("/universities")
+def get_universities(year_start: Optional[int] = Query(None), year_end: Optional[int] = Query(None)):
+    if year_start is not None and year_end is not None:
+        selected_files = [
+            pdf_paths[str(year)]
+            for year in range(year_start, year_end + 1)
+            if str(year) in pdf_paths
+        ]
+    else:
+        selected_files = list(pdf_paths.values())
 
-class handler(BaseHTTPRequestHandler):
-    def end_headers(self):
-        # Add CORS headers
-        self.send_header('Access-Control-Allow-Origin', '*')  # Allow CORS
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')  # Allow methods
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')  # Allow headers
-        super().end_headers()
+    if not selected_files:
+        return {"message": "No data for the given year range"}
 
-    def do_OPTIONS(self):
-        # Handle CORS preflight request
-        self.send_response(204)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', '*')
-        self.end_headers()
+    data = process_multiple_sources(selected_files)
+    return {"data": data}
 
-    def do_GET(self):
-        # Parse query parameters
-        parsed_url = urlparse(self.path)
-        query_params = parse_qs(parsed_url.query)
-        year_start = query_params.get('year_start', [None])[0]
-        year_end = query_params.get('year_end', [None])[0]
-
-        try:
-            year_start = int(year_start) if year_start is not None else None
-            year_end = int(year_end) if year_end is not None else None
-        except ValueError:
-            self.send_response(400)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps({"error": "Invalid year_start or year_end"}).encode('utf-8'))
-            return
-
-        # Filter valid years within the range
-        selected_pdfs = []
-        if year_start and year_end:
-            for year in range(year_start, year_end+1):
-                key = str(year)
-                if key in pdf_paths:  # Assuming pdf_paths is defined elsewhere
-                    selected_pdfs.append(pdf_paths[key])
-        print(selected_pdfs)
-        if selected_pdfs:
-            data = process_multiple_sources(selected_pdfs)  # Assuming process_pdfs is defined elsewhere
-        else:
-            data = {"message": "No data for the given year range"}
-
-        # Respond with JSON data
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.end_headers()
-        response = json.dumps({"data": data}).encode("utf-8")
-        self.wfile.write(response)
-
-
+# To run this: uvicorn yourfilename:app --reload --port 8000
 if __name__ == "__main__":
-    server_address = ('', 8001)
-    httpd = HTTPServer(server_address, handler)
-    print("Server running on http://localhost:8001")
-    httpd.serve_forever()
+    uvicorn.run("usenix_ranking:app", host="0.0.0.0", port=8000, reload=True)

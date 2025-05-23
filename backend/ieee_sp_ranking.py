@@ -1,11 +1,22 @@
+from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
+from typing import Optional
+from collections import Counter
 from bs4 import BeautifulSoup
+import uvicorn
 import re
 import json
-from http.server import HTTPServer, BaseHTTPRequestHandler
-from urllib.parse import urlparse, parse_qs
-from collections import Counter
 
+app = FastAPI()
 
+# Enable CORS (like your previous headers)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust as needed
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 html_paths = {
     "2016": "data/ieee_sp/sec16_contents.html",
@@ -17,53 +28,41 @@ html_paths = {
     "2022": "data/ieee_sp/sec22_contents.html",
     "2023": "data/ieee_sp/sec23_contents.html",
     "2024": "data/ieee_sp/sec24_contents.html",
-    "2025": "data/ieee_sp/sec25_contents.html"
+    "2025": "data/ieee_sp/sec25_contents.html",
 }
 
-
-
-def extract_universities(line):
+def extract_universities(line: str):
     unis = set()
     for author in line.split(','):
         match = re.search(r'\((.*?)\)', author)
         if match:
             uni = match.group(1)
-            uni = uni.replace("USA","").replace("United States of America","").replace("China","")
-            uni = uni.replace("The Netherlands","").replace("Republic of Korea","").replace("Switzerland","")
-            if ";" in uni: # there might be multiple associations
+            uni = uni.replace("USA", "").replace("United States of America", "").replace("China", "")
+            uni = uni.replace("The Netherlands", "").replace("Republic of Korea", "").replace("Switzerland", "")
+            if ";" in uni:
                 mini = uni.split(";")
-                unis.add(mini[0].strip())
-                unis.add(mini[1].strip())
-            elif "/" in uni: # there might be multiple associations
+                unis.update(map(str.strip, mini))
+            elif "/" in uni:
                 mini = uni.split("/")
-                unis.add(mini[0].strip())
-                unis.add(mini[1].strip())
+                unis.update(map(str.strip, mini))
             else:
                 unis.add(uni.strip())
     return list(unis)
-        
 
-def parse_html(source):
- # Read HTML
+def parse_html(source: str):
     with open(source, 'r', encoding='utf-8', errors="ignore") as f:
         html_content = f.read()
 
     soup = BeautifulSoup(html_content, 'html.parser')
-
-    # Find all the papers (they are inside divs with class list-group-item)
     papers = soup.find_all('div', class_='list-group-item')
 
     total_universities = []
-    # Process each paper
     for paper in papers:
         title_tag = paper.find('b')
         if not title_tag:
             continue
-        title = title_tag.get_text(strip=True)
-
-        # The rest of the text (after <br />)
         author_line = title_tag.next_sibling
-        while author_line and author_line.name != 'br':
+        while author_line and getattr(author_line, "name", None) != 'br':
             author_line = author_line.next_sibling
 
         if author_line and author_line.next_sibling:
@@ -73,76 +72,31 @@ def parse_html(source):
         universities = extract_universities(author_line)
         total_universities += universities
 
-
     return total_universities
 
-def process_multiple_sources(sources):
+def process_multiple_sources(sources: list):
     total_universities = []
     for source in sources:
         total_universities += parse_html(source)
-    
-    university_frequency = {}
-    university_frequency = dict(Counter(total_universities))
-    return dict(sorted(university_frequency.items(), key=lambda item: item[1], reverse=True))
+    return dict(sorted(dict(Counter(total_universities)).items(), key=lambda item: item[1], reverse=True))
 
+@app.get("/universities")
+def get_universities(year_start: Optional[int] = Query(None), year_end: Optional[int] = Query(None)):
+    if year_start is not None and year_end is not None:
+        selected_files = [
+            html_paths[str(year)]
+            for year in range(year_start, year_end + 1)
+            if str(year) in html_paths
+        ]
+    else:
+        selected_files = list(html_paths.values())
 
-class handler(BaseHTTPRequestHandler):
-    def end_headers(self):
-        # Add CORS headers
-        self.send_header('Access-Control-Allow-Origin', '*')  # Allow CORS
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')  # Allow methods
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')  # Allow headers
-        super().end_headers()
+    if not selected_files:
+        return {"message": "No data for the given year range"}
 
-    def do_OPTIONS(self):
-        # Handle CORS preflight request
-        self.send_response(204)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', '*')
-        self.end_headers()
+    data = process_multiple_sources(selected_files)
+    return {"data": data}
 
-    def do_GET(self):
-        # Parse query parameters
-        parsed_url = urlparse(self.path)
-        query_params = parse_qs(parsed_url.query)
-        year_start = query_params.get('year_start', [None])[0]
-        year_end = query_params.get('year_end', [None])[0]
-
-        try:
-            year_start = int(year_start) if year_start is not None else None
-            year_end = int(year_end) if year_end is not None else None
-        except ValueError:
-            self.send_response(400)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps({"error": "Invalid year_start or year_end"}).encode('utf-8'))
-            return
-
-        # Filter valid years within the range
-        selected_pdfs = []
-        if year_start and year_end:
-            for year in range(year_start, year_end+1):
-                key = str(year)
-                if key in html_paths:  # Assuming pdf_paths is defined elsewhere
-                    selected_pdfs.append(html_paths[key])
-        print(selected_pdfs)
-        if selected_pdfs:
-            data = process_multiple_sources(selected_pdfs)  # Assuming process_pdfs is defined elsewhere
-        else:
-            data = {"message": "No data for the given year range"}
-
-        # Respond with JSON data
-        self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.end_headers()
-        response = json.dumps({"data": data}).encode("utf-8")
-        self.wfile.write(response)
-
-
+# To run this: uvicorn ieee_sp_ranking:app --reload --port 8000
 if __name__ == "__main__":
-    server_address = ('', 8000)
-    httpd = HTTPServer(server_address, handler)
-    print("Server running on http://localhost:8000")
-    # print(process_multiple_sources([html_paths['2020'],html_paths['2021']]))
-    httpd.serve_forever()
+    uvicorn.run("ieee_sp_ranking:app", host="0.0.0.0", port=8000, reload=True)
