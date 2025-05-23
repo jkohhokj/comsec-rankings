@@ -3,21 +3,13 @@ from collections import Counter
 import json
 import fitz  # PyMuPDF
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, APIRouter, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import uvicorn
 
-app = FastAPI()
 
-# Enable CORS (like your previous headers)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Adjust as needed
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+router = APIRouter()
 
 pdf_paths = {
     "2004": "data/ccs/sec04_contents.pdf",
@@ -130,7 +122,7 @@ def process_multiple_sources(pdf_paths):
     return dict(sorted(university_frequency.items(), key=lambda item: item[1], reverse=True))
         
 
-@app.get("/universities")
+@router.get("/")
 def get_universities(year_start: Optional[int] = Query(None), year_end: Optional[int] = Query(None)):
     if year_start is not None and year_end is not None:
         selected_files = [
@@ -146,7 +138,9 @@ def get_universities(year_start: Optional[int] = Query(None), year_end: Optional
 
     data = process_multiple_sources(selected_files)
     return {"data": data}
+app = FastAPI()
+app.include_router(router)
 
 # To run this: uvicorn yourfilename:app --reload --port 8000
-if __name__ == "__main__":
-    uvicorn.run("ccs_ranking:app", host="0.0.0.0", port=8000, reload=True)
+#if __name__ == "__main__":
+#    uvicorn.run("ccs_ranking:app", host="0.0.0.0", port=8000, reload=True)

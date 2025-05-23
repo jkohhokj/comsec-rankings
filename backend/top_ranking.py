@@ -10,12 +10,16 @@ import json
 import string
 from collections import defaultdict
 
-from fastapi import FastAPI, Query
+from fastapi import APIRouter, FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import uvicorn
 
+
+router = APIRouter()
 app = FastAPI()
+
+
 
 # Enable CORS (like your previous headers)
 app.add_middleware(
@@ -26,7 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/universities")
+@router.get("/")
 def get_universities(year_start: Optional[int] = Query(None), year_end: Optional[int] = Query(None)):
     if year_start is not None and year_end is not None:
         selected_files = [
@@ -69,7 +73,7 @@ def get_universities(year_start: Optional[int] = Query(None), year_end: Optional
             data_combined[k] += v
     data = dict(data_combined)
     return {"data": data}
-
+app.include_router(router)
 # To run this: uvicorn yourfilename:app --reload --port 8000
 if __name__ == "__main__":
     uvicorn.run("combined_ranking:app", host="0.0.0.0", port=8000, reload=True)

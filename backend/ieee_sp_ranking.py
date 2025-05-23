@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import APIRouter, FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 from collections import Counter
@@ -8,6 +8,7 @@ import re
 import json
 
 app = FastAPI()
+router = APIRouter()
 
 # Enable CORS (like your previous headers)
 app.add_middleware(
@@ -80,7 +81,7 @@ def process_multiple_sources(sources: list):
         total_universities += parse_html(source)
     return dict(sorted(dict(Counter(total_universities)).items(), key=lambda item: item[1], reverse=True))
 
-@app.get("/universities")
+@router.get("/")
 def get_universities(year_start: Optional[int] = Query(None), year_end: Optional[int] = Query(None)):
     if year_start is not None and year_end is not None:
         selected_files = [
@@ -97,6 +98,7 @@ def get_universities(year_start: Optional[int] = Query(None), year_end: Optional
     data = process_multiple_sources(selected_files)
     return {"data": data}
 
+app.include_router(router)
 # To run this: uvicorn ieee_sp_ranking:app --reload --port 8000
 if __name__ == "__main__":
     uvicorn.run("ieee_sp_ranking:app", host="0.0.0.0", port=8000, reload=True)
