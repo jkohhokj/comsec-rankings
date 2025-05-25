@@ -8,14 +8,15 @@ export default function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div className="text-5xl">Computer Security Rankings</div>
         <div className="w-2xl">
-          ComSec Rankings is a website inspired by CSrankings.org to aggregate
-          publications in top tier conferences across the world. Unfortunately,
-          CSrankings only accounts for labs and professors within the CS
-          department of a university so labs like SETH Lab at Texas A&M that
-          regularly publish to CSS, Usenix, and S&P, but are under the ECE
-          department, are not included in this list. ComSec Rankings ranks all
-          universities from number of publications, regardless of department
-          together.
+          To learn more about the motivation, methodology, and meta-information in creating this
+          website, check out the {" "}
+          <a
+            className="font-medium font-blue-200/75 underline hover:no-underline"
+            href="/about"
+          >
+            about section
+          </a>
+          .
         </div>
 
         <InstitutionFrequencyChart
