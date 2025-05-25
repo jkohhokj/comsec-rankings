@@ -69,7 +69,7 @@ export default function InstitutionFrequencyChart({
       <h2 className="text-xl font-bold mb-4 text-center">
         Top Institutions by
         <span> {conference_name} </span>
-        Papers
+        Publications
       </h2>
 
       {/* Slider Controls */}
